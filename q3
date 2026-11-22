@@ -1,0 +1,50 @@
+class Movie {
+String title;
+String studio;
+String rating;
+
+// First Constructor
+Movie(this.title, this.studio, this.rating);
+
+// Second Constructor
+Movie.defaultRating(this.title, this.studio)
+: rating = "PG";
+
+// Get movies with PG rating
+static List<Movie> getPG(List<Movie> movies) {
+List<Movie> result = [];
+
+for (var movie in movies) {
+  if (movie.rating.contains("PG")) {
+    result.add(movie);
+  }
+}
+
+return result;
+}
+}
+
+void main() {
+Movie m1 = Movie(
+"Casino Royale", "Eon Productions", "PG13");
+
+Movie m2 = Movie.defaultRating(
+"Toy Story", "Pixar");
+
+Movie m3 = Movie(
+"Frozen", "Disney", "PG");
+
+List<Movie> movies = [m1, m2, m3];
+
+List<Movie> pgMovies = Movie.getPG(movies);
+
+print("Movie: ${m1.title}");
+print("Studio: ${m1.studio}");
+print("Rating: ${m1.rating}");
+
+print("Movies with PG rating:");
+
+for (var movie in pgMovies) {
+print(movie.title);
+}
+}

@@ -1,0 +1,37 @@
+class BankAccount {
+  int accountID;
+  double balance;
+
+  // First Constructor
+  BankAccount(this.accountID, this.balance);
+
+  // Second Constructor
+  BankAccount.zero(this.accountID) : balance = 0;
+
+  // Withdraw Method
+  void withdraw(double amount) {
+    if (balance >= amount) {
+      balance -= amount;
+      print("Withdraw successful");
+    } else {
+      print("Insufficient balance");
+    }
+  }
+
+  // Deposit Method
+  void deposit(double amount) {
+    balance += amount;
+    print("Deposit successful");
+  }
+}
+
+void main() {
+  BankAccount account1 = BankAccount(101, 5000);
+  BankAccount account2 = BankAccount.zero(102);
+
+  account1.deposit(1000);
+  account1.withdraw(2000);
+
+  print(account1.balance);
+  print(account2.balance);
+}
